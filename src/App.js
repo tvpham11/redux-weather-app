@@ -26,6 +26,15 @@ class App extends React.Component {
 
     const weatherData = await api_call.json();
     console.log(weatherData);
+
+    this.setState({
+      city: weatherData.name,
+      country: weatherData.sys.country,
+      temperature: weatherData.main.temp,
+      humidity: weatherData.main.humidity,
+      description: weatherData.weather[0].description,
+      error: undefined
+    });
     
   }
 
@@ -34,7 +43,13 @@ class App extends React.Component {
       <div>
         <Title />
         <Form getWeather={this.getWeather}/>
-        <Weather />
+        <Weather 
+          city = {this.state.city}
+          country = {this.state.country}
+          temperature = {this.state.temperature}
+          humidity = {this.state.humidity}
+          description = {this.state.description}
+        />
       </div>
     );
   }
