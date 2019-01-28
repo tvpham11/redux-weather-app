@@ -1,10 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import '.App.css';
+import '../App.css';
 
-import { toggleFavoritedCity } from './models/actions/toggleFavoritedCity';
-import { removeCity } from './models/actions/index';
+import { toggleFavoritedCity, removeCity } from '../models/actions/index';
 
 class List extends Component {
   state = { favorited: false }
@@ -52,8 +51,7 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  toggleFavoritedCity
-  , removeCity
+  toggleFavoritedCity, removeCity
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

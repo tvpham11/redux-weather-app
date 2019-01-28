@@ -6,7 +6,7 @@ import Title from './components/Title';
 import Form from './components/Form';
 import Weather from './components/Weather';
 import List from './components/List'
-import rootReducer from './models/reducers'
+import rootReducer from './models/reducers';
 
 const API_KEY = '2a0f33fbf7b1f8aa1b6d8e746d3eff7f';
 
