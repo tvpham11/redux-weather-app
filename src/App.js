@@ -1,13 +1,21 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { createStore } from 'redux';
+import { Provider } from 'react-redux';
 
 import Title from './components/Title';
 import Form from './components/Form';
 import Weather from './components/Weather';
 import List from './components/List'
+import rootReducer from './models/reducers'
 
 const API_KEY = '2a0f33fbf7b1f8aa1b6d8e746d3eff7f';
 
-class App extends React.Component {
+export const store = createStore(
+  rootReducer,
+  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
+);
+
+class App extends Component {
   state = {
     city: undefined,
     country: undefined,
@@ -63,6 +71,7 @@ class App extends React.Component {
           description = {this.state.description}
           error = {this.state.error}
         />
+        <List />
       </div>
     );
   }
