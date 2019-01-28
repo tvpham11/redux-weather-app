@@ -3,6 +3,7 @@ import React from 'react';
 import Title from './components/Title';
 import Form from './components/Form';
 import Weather from './components/Weather';
+import List from './components/List'
 
 const API_KEY = '2a0f33fbf7b1f8aa1b6d8e746d3eff7f';
 
@@ -25,7 +26,7 @@ class App extends React.Component {
     const api_call = await fetch  (`http://api.openweathermap.org/data/2.5/weather?q=${city},${country}&APPID=${API_KEY}&units=imperial`);
 
     const weatherData = await api_call.json();
-    
+
     if (city && country) {
       console.log(weatherData);
 
@@ -54,7 +55,7 @@ class App extends React.Component {
       <div>
         <Title />
         <Form getWeather={this.getWeather}/>
-        <Weather 
+        <Weather
           city = {this.state.city}
           country = {this.state.country}
           temperature = {this.state.temperature}
