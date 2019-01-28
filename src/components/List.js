@@ -4,7 +4,7 @@ import { connect } from 'react-redux';
 import '.App.css';
 
 import { toggleFavoritedCity } from './models/actions/toggleFavoritedCity';
-import { removeCity } from './models/actions/removeCity';
+import { removeCity } from './models/actions/index';
 
 class List extends Component {
   state = { favorited: false }
@@ -17,15 +17,15 @@ class List extends Component {
     toggleCity(city.id);
   }
 
-  deleteCity(event, city) {
+  removeCity(event, city) {
     event.preventDefault();
-    const { deleteCity } = this.props;
+    const { removeCity } = this.props;
 
-    deleteCity(city.id);
+    removeCity(city.id);
   }
 
   citiesList() {
-    const { cities } = this.props;
+    const { cities } = this.props.cities;
     console.log(cities);
     return cities.map((city) =>
       <li key = { city.id } >
@@ -52,7 +52,8 @@ const mapStateToProps = state => ({
 })
 
 const mapDispatchToProps = {
-  toggleFavoritedCity, removeCity
+  toggleFavoritedCity
+  , removeCity
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(List);

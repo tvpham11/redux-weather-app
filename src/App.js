@@ -35,7 +35,16 @@ class App extends Component {
 
     const weatherData = await api_call.json();
 
-    if (city && country) {
+    if (weatherData.cod == 404) {
+      this.setState({
+        city: undefined,
+        country: undefined,
+        temperature: undefined,
+        humidity: undefined,
+        description: undefined,
+        error: 'Please make sure your inputs are valid.'
+      })
+    } else if (city && country) {
       console.log(weatherData);
 
       this.setState({
